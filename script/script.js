@@ -5,3 +5,46 @@ const gebruikers = [
   { id: 4, login: "jos.teugels", leeftijd: 13 },
   { id: 5, login: "piet.pollekes", leeftijd: 27 },
 ];
+
+const AddBtn = document.querySelector("#AddBtn");
+const InputLogin = document.querySelector("#login");
+const InputLeeftijd = document.querySelector("#leeftijd");
+
+const OuderBtn = document.querySelector("#ouderBtn");
+const JongerBtn = document.querySelector("#jongerBtn");
+const InputFilter = document.querySelector("#filterLeeftijd");
+const Tekst = document.querySelector("#tekst");
+let TekstInhoud = "";
+
+AddBtn.addEventListener("click", addInfo);
+OuderBtn.addEventListener("click", ouder);
+JongerBtn.addEventListener("click", jonger);
+
+function addInfo() {
+  gebruikers.push({
+    id: gebruikers.length + 1,
+    login: InputLogin.value,
+    leeftijd: parseInt(InputLeeftijd.value),
+  });
+  console.log(gebruikers);
+}
+
+function ouder() {
+  TekstInhoud = "";
+  gebruikers.forEach((info) => {
+    if (info.leeftijd > InputFilter.value) {
+      TekstInhoud += `${info.login} - `;
+    }
+  });
+  Tekst.textContent = TekstInhoud;
+}
+
+function jonger() {
+  TekstInhoud = "";
+  gebruikers.forEach((info) => {
+    if (info.leeftijd < InputFilter.value) {
+      TekstInhoud += `${info.login} - `;
+    }
+  });
+  Tekst.textContent = TekstInhoud;
+}
