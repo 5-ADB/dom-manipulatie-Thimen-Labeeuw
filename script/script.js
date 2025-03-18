@@ -14,7 +14,6 @@ const OuderBtn = document.querySelector("#ouderBtn");
 const JongerBtn = document.querySelector("#jongerBtn");
 const InputFilter = document.querySelector("#filterLeeftijd");
 const Tekst = document.querySelector("#tekst");
-let TekstInhoud = "";
 
 AddBtn.addEventListener("click", addInfo);
 OuderBtn.addEventListener("click", ouder);
@@ -30,21 +29,23 @@ function addInfo() {
 }
 
 function ouder() {
-  TekstInhoud = "";
+  Tekst.textContent = "";
   gebruikers.forEach((info) => {
     if (info.leeftijd > InputFilter.value) {
-      TekstInhoud += `${info.login} - `;
+      const itemlist = document.createElement("div");
+      itemlist.textContent = info.login;
+      Tekst.appendChild(itemlist);
     }
   });
-  Tekst.textContent = TekstInhoud;
 }
 
 function jonger() {
-  TekstInhoud = "";
+  Tekst.textContent = "";
   gebruikers.forEach((info) => {
     if (info.leeftijd < InputFilter.value) {
-      TekstInhoud += `${info.login} - `;
+      const itemlist = document.createElement("div");
+      itemlist.textContent = info.login;
+      Tekst.appendChild(itemlist);
     }
   });
-  Tekst.textContent = TekstInhoud;
 }
