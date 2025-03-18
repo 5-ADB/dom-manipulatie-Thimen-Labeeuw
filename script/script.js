@@ -31,10 +31,14 @@ function addInfo() {
 function ouder() {
   Tekst.textContent = "";
   gebruikers.forEach((info) => {
-    if (info.leeftijd > InputFilter.value) {
+    if (info.leeftijd < InputFilter.value) {
       const itemlist = document.createElement("div");
+      const subtractBtn = document.createElement("btn");
+      subtractBtn.textContent = "-";
+      itemlist.className = "kadertje";
       itemlist.textContent = info.login;
       Tekst.appendChild(itemlist);
+      Tekst.appendChild(subtractBtn);
     }
   });
 }
@@ -44,8 +48,12 @@ function jonger() {
   gebruikers.forEach((info) => {
     if (info.leeftijd < InputFilter.value) {
       const itemlist = document.createElement("div");
+      const subtractBtn = document.createElement("btn");
+      subtractBtn.textContent = "-";
+      itemlist.className = "kadertje";
       itemlist.textContent = info.login;
       Tekst.appendChild(itemlist);
+      Tekst.appendChild(subtractBtn);
     }
   });
 }
